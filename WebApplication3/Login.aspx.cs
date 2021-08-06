@@ -21,16 +21,16 @@ namespace WebApplication3
             }
 
             //--Verificar se existe um usuário admin cadastrado
-            if (Functions.VerificarUsuarioAdmin())
-            {
-                //--Se houver NÃO EXIBE botão de criar usuário admin
-                btnCriarUsuarioAdmin.Visible = false;
-            }
-            else
-            {
-                //--Se houver EXIBE botão de criar usuário admin
-                btnCriarUsuarioAdmin.Visible = true;
-            }
+            //if (Functions.VerificarUsuarioAdmin())
+            //{
+            //    //--Se houver NÃO EXIBE botão de criar usuário admin
+            //    btnCriarUsuarioAdmin.Visible = false;
+            //}
+            //else
+            //{
+            //    //--Se houver EXIBE botão de criar usuário admin
+            //    btnCriarUsuarioAdmin.Visible = true;
+            //}
 
             //--Verifica se existe sessão criada
             if (HttpContext.Current.Session["Logado"] == null)
@@ -95,27 +95,27 @@ namespace WebApplication3
 
         }
 
-        protected void BtnCriarUsuarioAdmin_Click(object sender, EventArgs e)
-        {
-            CriarUsuarioAdmin();
-            btnCriarUsuarioAdmin.Visible = false;
-            Response.Write("<script>alert('Usuário admin criado com sucesso!')</script>");
-        }
+        //protected void BtnCriarUsuarioAdmin_Click(object sender, EventArgs e)
+        //{
+        //    CriarUsuarioAdmin();
+        //    btnCriarUsuarioAdmin.Visible = false;
+        //    Response.Write("<script>alert('Usuário admin criado com sucesso!')</script>");
+        //}
 
 
-        private void CriarUsuarioAdmin()
-        {
+        //private void CriarUsuarioAdmin()
+        //{
 
-            if (!Functions.VerificarUsuarioAdmin())
-            {
-                var usuario = new Usuario();
-                usuario.Id = 1;
-                usuario.Nome = "admin";
-                usuario.Email = "admin";
-                usuario.Login = "admin";
-                usuario.Senha = "admin";
-                usuario.Salvar();
-            }
-        }
+        //    if (!Functions.VerificarUsuarioAdmin())
+        //    {
+        //        var usuario = new Usuario();
+        //        usuario.Id = 1;
+        //        usuario.Nome = "admin";
+        //        usuario.Email = "admin";
+        //        usuario.Login = "admin";
+        //        usuario.Senha = "admin";
+        //        usuario.Salvar();
+        //    }
+        //}
     }
 }

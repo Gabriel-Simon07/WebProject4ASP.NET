@@ -44,8 +44,8 @@ namespace WebApplication3
                             inputUsuarioEmail.Text = usuario.Email;
                             inputCadastroLogin.Text = usuario.Login;
                             inputCadastroSenha.Text = usuario.Senha;
-                //            inputFoto.FileContent = System.Configuration.ConfigurationManager.AppSettings
-                //["caminhoArquivo"].Replace(@"\", "/") + "/" + foto.FileName;
+                            inputFoto.FileContent = System.Configuration.ConfigurationManager.AppSettings
+                            ["caminhoArquivo"].Replace(@"\", "/") + "/" + foto.FileName;
                             inputId.Text = usuario.Id.ToString();
                             
 

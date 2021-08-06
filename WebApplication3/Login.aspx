@@ -27,7 +27,7 @@
                     </tr>
                 </table>
                 <asp:Button ID="btnConfirmaLogin" runat="server" OnClick="BtnConfirmarLogin_Click" Text="Confirmar" />
-                <asp:Button ID="btnCriarUsuarioAdmin" runat="server" OnClick="BtnCriarUsuarioAdmin_Click" Text="Criar usuário admin" />
+                
             </asp:Panel>
             
         </div>    

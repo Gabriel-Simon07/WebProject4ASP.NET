@@ -76,14 +76,5 @@ namespace WebApplication3
 		/// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.Button btnConfirmaLogin;
-
-		/// <summary>
-		/// Controle btnCriarUsuarioAdmin.
-		/// </summary>
-		/// <remarks>
-		/// Campo gerado automaticamente.
-		/// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnCriarUsuarioAdmin;
 	}
 }
