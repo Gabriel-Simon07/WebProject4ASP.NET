@@ -18,10 +18,9 @@
                                   Text="Excluir" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                    	<asp:BoundField HeaderText="ID" />
+                    	<asp:BoundField HeaderText="ID" DataField="Id" />
 						<asp:BoundField DataField="Nome" HeaderText="Nome" />
 						<asp:BoundField DataField="Email" HeaderText="Email" />
-						<asp:BoundField DataField="Senha" DataFormatString="***" HeaderText="Senha" />
 						<asp:ImageField DataImageUrlField="Foto" HeaderText="Foto">
 						</asp:ImageField>
                     </Columns>

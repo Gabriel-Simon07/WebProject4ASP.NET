@@ -10,40 +10,22 @@ namespace WebApplication3
 {
     public partial class Cadastro2 : System.Web.UI.Page
     {
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (!Page.IsPostBack) { 
                 inputLogin.Text = string.Empty;
                 inputSenha.Text = string.Empty;
             }
-
-            //--Verificar se existe um usuário admin cadastrado
-            //if (Functions.VerificarUsuarioAdmin())
-            //{
-            //    //--Se houver NÃO EXIBE botão de criar usuário admin
-            //    btnCriarUsuarioAdmin.Visible = false;
-            //}
-            //else
-            //{
-            //    //--Se houver EXIBE botão de criar usuário admin
-            //    btnCriarUsuarioAdmin.Visible = true;
-            //}
-
-            //--Verifica se existe sessão criada
+            
             if (HttpContext.Current.Session["Logado"] == null)
             {
                 Session["Login"] = string.Empty;
                 Session["Logado"] = false;
             }
-
         }
 
         protected void BtnConfirmarLogin_Click(object sender, EventArgs e)
         {
-
             bool temError = false;
             string mensagemErro = string.Empty;
 
@@ -52,7 +34,6 @@ namespace WebApplication3
 
             if (!temError)
             {
-
                 if (login == string.Empty)
                 {
                     temError = true;
@@ -78,7 +59,6 @@ namespace WebApplication3
                     inputLogin.Enabled = false;
                     inputSenha.Visible = false;
                     btnConfirmaLogin.Visible = false;
-
                 }
                 else
                 {
@@ -92,30 +72,13 @@ namespace WebApplication3
             {
                 Response.Write("<script>alert('Erro: " + mensagemErro + " " + login + "')</script>");
             }
-
+            
+            
         }
 
-        //protected void BtnCriarUsuarioAdmin_Click(object sender, EventArgs e)
-        //{
-        //    CriarUsuarioAdmin();
-        //    btnCriarUsuarioAdmin.Visible = false;
-        //    Response.Write("<script>alert('Usuário admin criado com sucesso!')</script>");
-        //}
+		protected void inputLogin_TextChanged(object sender, EventArgs e)
+		{
 
-
-        //private void CriarUsuarioAdmin()
-        //{
-
-        //    if (!Functions.VerificarUsuarioAdmin())
-        //    {
-        //        var usuario = new Usuario();
-        //        usuario.Id = 1;
-        //        usuario.Nome = "admin";
-        //        usuario.Email = "admin";
-        //        usuario.Login = "admin";
-        //        usuario.Senha = "admin";
-        //        usuario.Salvar();
-        //    }
-        //}
-    }
+		}
+	}
 }

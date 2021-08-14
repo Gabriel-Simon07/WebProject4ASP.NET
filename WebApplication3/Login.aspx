@@ -11,7 +11,7 @@
                     
                         <td>
                          <div>
-                            <asp:TextBox ID="inputLogin" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="inputLogin" runat="server" OnTextChanged="inputLogin_TextChanged"></asp:TextBox>
                          </div>
                          </td>
                     </tr>

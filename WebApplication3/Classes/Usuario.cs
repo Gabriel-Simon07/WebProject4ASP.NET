@@ -12,19 +12,25 @@ namespace WebApplication3
     public class Usuario
     {
         public Usuario() { }
-        public Usuario(MySqlDataReader dadoLido) {
-            this.Id = dadoLido.GetInt32(0);
-            this.Nome = dadoLido.GetString(1);
-            this.Email = dadoLido.GetString(2);
-            this.Senha = dadoLido.GetString(3);
-            this.Login = dadoLido.GetString(4);
-            this.Foto = dadoLido.GetString(5);
-        }
-        //TODO
-  //      public Usuario(string)
-		//{
 
-		//}
+        public Usuario(MySqlDataReader dadoLido)
+		{
+            this.Id = !dadoLido.IsDBNull(0) ? dadoLido.GetInt32(0) : 0;
+            this.Nome = !dadoLido.IsDBNull(1) ? dadoLido.GetString(1) : "";
+            this.Email = !dadoLido.IsDBNull(2) ? dadoLido.GetString(2) : "";
+            this.Senha = !dadoLido.IsDBNull(3) ? dadoLido.GetString(3) : "";
+            this.Login = !dadoLido.IsDBNull(4) ? dadoLido.GetString(4) : "";
+            this.Foto = !dadoLido.IsDBNull(5) ? dadoLido.GetString(5) : "";
+        }
+
+        public Usuario(string nome, string senha, string email, string login, string foto)
+		{
+            this.Nome = nome;
+            this.Senha = senha;
+            this.Email = email;
+            this.Login = login;
+            this.Foto = foto;
+		}
 
         public Int32 Id { get; set; }
 
@@ -38,71 +44,7 @@ namespace WebApplication3
 
         public string Foto { get; set; }
 
-		public static List<Usuario> Lista = new List<Usuario>();
-
-		public List<Usuario> Todos()
-		{
-            List<Usuario> lista = new List<Usuario>();
-
-            MySqlConnection conexao = new MySqlConnection(Functions.ObterConnectionString());
-
-            string query = "SELECT * FROM usuario";
-
-            MySqlCommand comando = new MySqlCommand(query, conexao);
-			//return Usuario.Lista;
-			try
-			{
-                conexao.Open();
-
-                MySqlDataReader dadoLido = comando.ExecuteReader();
-
-				while (dadoLido.Read())
-				{
-                    lista.Add(new Usuario(dadoLido));
-				}
-			}
-			catch
-			{
-
-			}
-            return lista;
-		}
-
-		//public void Salvar()
-		//{
-
-		//	Usuario.Lista.Add(this);
-
-		//}
-		public void Salvar()
-		{
-            MySqlConnection conexao = new MySqlConnection(Functions.ObterConnectionString());
-
-            string query = "Insert into usuario (Nome, Email, Senha, Login, Foto) VALUES(@Nome" +
-                ",@Email,@Senha,@Login,@Foto)";
-
-            MySqlCommand comando = new MySqlCommand(query, conexao);
-
-			try
-			{
-                conexao.Open();
-                comando.Parameters.AddWithValue("@Nome", this.Nome);
-                comando.Parameters.AddWithValue("@Email", this.Email);
-                comando.Parameters.AddWithValue("@Senha", this.Senha);
-                comando.Parameters.AddWithValue("@Login", this.Login);
-                comando.Parameters.AddWithValue("@Foto", this.Foto);
-                comando.ExecuteNonQuery();
-			}
-			catch (SqlException ex)
-			{
-                string ErrorMessage = ex.ToString();
-			}
-			finally
-			{
-                conexao.Close();
-			}
-           
-		}    
+		
 
     }
 }

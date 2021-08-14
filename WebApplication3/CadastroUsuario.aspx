@@ -15,10 +15,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td class="auto-style2">
                             <asp:Label ID="LabelNome" runat="server" Text="Nome"></asp:Label>
                         </td>
-                        <td>
+                        <td class="auto-style2">
                             <asp:TextBox ID="inputUsuarioNome" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="inputUsuarioNome" ErrorMessage="Informe o nome"></asp:RequiredFieldValidator>
                         </td>
@@ -76,5 +76,8 @@
         .auto-style1 {
             height: 26px;
         }
+    	.auto-style2 {
+			height: 30px;
+		}
     </style>
     </asp:Content>
