@@ -12,6 +12,7 @@ namespace WebApplication3
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            pnlLista.Visible = true;
             bool logado = false;
             string loginNome = string.Empty;
 
@@ -28,10 +29,7 @@ namespace WebApplication3
             if (logado) {               
 
                 if (!IsPostBack) { 
-
-                    pnlLista.Visible    = true;
-
-                    GridViewUsuarios.DataSource = Usuario.Lista;
+                    GridViewUsuarios.DataSource = Functions.Todos();
                     GridViewUsuarios.DataBind();
                 }
 
@@ -39,16 +37,12 @@ namespace WebApplication3
                 pnlLista.Visible = false;
                 Response.Write("<script>alert('Usuário não autenticado!</script> ");
             }
-
-            
-
         }
 
         protected void BtnInserir_Click(object sender, EventArgs e)
         {
             string operacao = "INS";
             Response.Redirect($"CadastroUsuario.aspx?operacao={operacao}");
-
         }      
 
         protected void GridViewUsuarios_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -56,19 +50,11 @@ namespace WebApplication3
 
             if (e.CommandName == "Alterar")
             {
-                //Determine the RowIndex of the Row whose Button was clicked.
                 int rowIndex = Convert.ToInt32(e.CommandArgument);
 
-                //Reference the GridView Row.
                 GridViewRow row = GridViewUsuarios.Rows[rowIndex];
 
-                //Fetch value of Name.
-                //string login = (row.FindControl("Login") as TextBox).Text;
-
-                //Fetch value of Country
                 Int32 id = int.Parse(row.Cells[1].Text);
-                //string nome = row.Cells[2].Text;
-                //string login = row.Cells[5].Text;
 
                 string operacao = "UPD";
                 Response.Redirect($"CadastroUsuario.aspx?operacao={operacao}&id={id}");
@@ -79,19 +65,11 @@ namespace WebApplication3
             if (e.CommandName == "Excluir")
             {
 
-                //Determine the RowIndex of the Row whose Button was clicked.
                 int rowIndex = Convert.ToInt32(e.CommandArgument);
 
-                //Reference the GridView Row.
                 GridViewRow row = GridViewUsuarios.Rows[rowIndex];
 
-                //Fetch value of Name.
-                //string login = (row.FindControl("Login") as TextBox).Text;
-
-                //Fetch value of Country
                 Int32 id = int.Parse(row.Cells[1].Text);
-                //string nome = row.Cells[2].Text;
-                //string login = row.Cells[5].Text;
 
                 string operacao = "DEL";
                 Response.Redirect($"CadastroUsuario.aspx?operacao={operacao}&id={id}");

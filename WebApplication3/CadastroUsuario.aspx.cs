@@ -11,30 +11,28 @@ namespace WebApplication3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            btnIncluir.Visible = true;
+            btnAtualiza.Visible = true;
+            btnExcluir.Visible = true;
+            pnlCadastro.Visible = true;
+
             string operacao = Request.QueryString["operacao"];
             if (operacao != null)
             {
-
-                //foreach (String item in Request.QueryString.Keys)
-                //{
-                //    lblOperacao.Text += "Chave= " + item + " --> " + Request.QueryString[item] + "";
-                //}
-
                 if (!IsPostBack)
                 {
-                    if (operacao == "INS") //--Inserir
+                    if (operacao == "INS") 
                     {
                         inputUsuarioNome.Text = string.Empty;
                         inputUsuarioEmail.Text = string.Empty;
                         inputCadastroLogin.Text = string.Empty;
                         inputCadastroSenha.Text = string.Empty;
-                        //inputFoto = null;
-                        btnIncluir.Visible = true;
-                        btnAtualiza.Visible = false;
-                        btnExcluir.Visible = false;
+                        //btnIncluir.Visible = true;
+                        //btnAtualiza.Visible = false;
+                        //btnExcluir.Visible = false;
 
                     }
-                    else if (operacao == "UPD") //-Atualizar
+                    else if (operacao == "UPD") 
                     {
                         if (Request.QueryString["id"] != null)
                         {
@@ -44,20 +42,16 @@ namespace WebApplication3
                             inputUsuarioEmail.Text = usuario.Email;
                             inputCadastroLogin.Text = usuario.Login;
                             inputCadastroSenha.Text = usuario.Senha;
-                            inputFoto.FileContent = System.Configuration.ConfigurationManager.AppSettings
-                            ["caminhoArquivo"].Replace(@"\", "/") + "/" + foto.FileName;
+                            //inputFoto.FileContent = System.Configuration.ConfigurationManager.AppSettings
+                            //["caminhoArquivo"].Replace(@"\", "/") + "/" + foto.FileName;
                             inputId.Text = usuario.Id.ToString();
-                            
 
-                            btnIncluir.Visible = false;
-                            btnAtualiza.Visible = true;
-                            btnExcluir.Visible = false;
-
-                            
-                        }
-
+							btnIncluir.Visible = true;
+							btnAtualiza.Visible = true;
+							btnExcluir.Visible = true;
+						}
                     }
-                    else if (operacao == "DEL") //--Deletar
+                    else if (operacao == "DEL") 
                     {
                         if (Request.QueryString["id"] != null)
                         {
@@ -69,11 +63,10 @@ namespace WebApplication3
                             inputCadastroSenha.Text = usuario.Senha;
                             inputId.Text = usuario.Id.ToString();
                            
-                            btnIncluir.Visible = false;
-                            btnAtualiza.Visible = false;
-                            btnExcluir.Visible = true;
+                            //btnIncluir.Visible = false;
+                            //btnAtualiza.Visible = false;
+                            //btnExcluir.Visible = true;
                         }
-
                     }
                     else
                     {
@@ -86,9 +79,7 @@ namespace WebApplication3
                             inputCadastroLogin.Text = usuario.Login;
                             inputCadastroSenha.Text = usuario.Senha;
                             //operacao == "DSP" --Display
-                            btnIncluir.Visible = false;
-                            btnAtualiza.Visible = false;
-                            btnExcluir.Visible = false;
+                            
                         }
                     }
                 }
@@ -97,66 +88,45 @@ namespace WebApplication3
 
         protected void BtnIncluir_Click(object sender, EventArgs e)
         {
-
+           Usuario usuario = new Usuario();
             CadastrarUsuario(inputUsuarioNome.Text, inputUsuarioEmail.Text, inputCadastroLogin.Text, inputCadastroSenha.Text, inputFoto);
-
-            //--Voltar para a tela de lista de usuários
+            Functions.Salvar(usuario);
+            
             Response.Redirect("Cadastro.aspx");
-
         }
 
         protected void BtnAtualizar_Click(object sender, EventArgs e)
         {
-
             AtualizarUsuario(inputId.Text, inputUsuarioNome.Text, inputUsuarioEmail.Text, inputCadastroLogin.Text, inputCadastroSenha.Text, inputFoto);
-
-            //--Voltar para a tela de lista de usuários
             Response.Redirect("Cadastro.aspx");
-
         }
 
         protected void BtnExcluir_Click(object sender, EventArgs e)
         {
-
             RemoverUsuario(inputId.Text);
-
-            //--Voltar para a tela de lista de usuários
             Response.Redirect("Cadastro.aspx");
-
         }
-
 
         private void CadastrarUsuario(string nome, string email, string login, string senha, FileUpload foto)
         {
-            //--obter proximo id
-            Int32 id = 1;
-            if (Usuario.Lista.Count > 0)
-            {
-                var ultimoUsuario = Usuario.Lista[Usuario.Lista.Count - 1];
-                id = ultimoUsuario.Id + 1;
-            }
 
             string caminhoArquivo = AppDomain.CurrentDomain.BaseDirectory + System.Configuration.ConfigurationManager.AppSettings["caminhoArquivo"] + @"\" + foto.FileName;
-            // C:\Users\i4i\source\repos\WebApplication3\WebApplication3   \arquivos   \  foto.png
-
             inputFoto.SaveAs(caminhoArquivo);
+            Usuario usuario = new Usuario();
+            
 
-            var usuario = new Usuario();
-            usuario.Id = id;
             usuario.Nome = nome;
             usuario.Email = email;
             usuario.Login = login;
             usuario.Senha = senha;
             usuario.Foto = System.Configuration.ConfigurationManager.AppSettings
                 ["caminhoArquivo"].Replace(@"\", "/") + "/" + foto.FileName;
-            usuario.Salvar();
-
+            Functions.Salvar(usuario);
         }
 
         private void AtualizarUsuario(string id, string nome, string email, string login, string senha, FileUpload foto)
         {
-
-            Usuario usuario = Functions.ObterUsuario(int.Parse(id));
+            Usuario usuario = Functions.ObterUsuarioPorId(int.Parse(id));
             usuario.Nome = nome;
             usuario.Email = email;
             usuario.Login = login;
@@ -168,9 +138,7 @@ namespace WebApplication3
         private void RemoverUsuario(string id)
         {
             Usuario usuario = Functions.ObterUsuario(int.Parse(id));
-            Usuario.Lista.Remove(usuario);
+            Functions.Todos().Remove(usuario);
         }
-
-
     }
 }
