@@ -117,6 +117,9 @@
     <Content Include="CadastroUsuario.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="Registro.aspx" />
+    <Content Include="RelatorioVisitas.aspx" />
+    <Content Include="Visitantes.aspx" />
     <Content Include="Web.config" />
     <Content Include="Cadastro.aspx" />
     <Content Include="Logout.aspx" />
@@ -136,6 +139,20 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registro.aspx.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registro.aspx.designer.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RelatorioVisitas.aspx.cs">
+      <DependentUpon>RelatorioVisitas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RelatorioVisitas.aspx.designer.cs">
+      <DependentUpon>RelatorioVisitas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -166,6 +183,13 @@
     </Compile>
     <Compile Include="Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Visitantes.aspx.cs">
+      <DependentUpon>Visitantes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Visitantes.aspx.designer.cs">
+      <DependentUpon>Visitantes.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
