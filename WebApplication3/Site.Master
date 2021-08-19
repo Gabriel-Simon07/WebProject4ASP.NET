@@ -16,6 +16,9 @@
                 <li><a runat="server" href="~/Login.aspx">Login</a></li>
                 <li><a runat="server" href="~/Cadastro.aspx">Cadastro</a></li>
                 <li><a runat="server" href="~/Logout.aspx">Logout</a></li>
+                <li><a runat="server" href="~/Visitantes.aspx">Visitantes</a></li>
+                <li><a runat="server" href="~/Registro.aspx">Registro</a></li>
+                <li><a runat="server" href="~/RelatorioVisitas.aspx">Relatório de Visitas</a></li>
             </ul>
         </div>
         <div>
