@@ -133,6 +133,7 @@
       <DependentUpon>CadastroUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Classes\Functions.cs" />
+    <Compile Include="Classes\Visitante.cs" />
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
