@@ -15,15 +15,6 @@ namespace WebApplication3
 	{
 
 		/// <summary>
-		/// Controle form1.
-		/// </summary>
-		/// <remarks>
-		/// Campo gerado automaticamente.
-		/// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-		/// <summary>
 		/// Controle gridVisitas.
 		/// </summary>
 		/// <remarks>
@@ -31,5 +22,14 @@ namespace WebApplication3
 		/// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.GridView gridVisitas;
+
+		/// <summary>
+		/// Controle btnVoltar.
+		/// </summary>
+		/// <remarks>
+		/// Campo gerado automaticamente.
+		/// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Button btnVoltar;
 	}
 }

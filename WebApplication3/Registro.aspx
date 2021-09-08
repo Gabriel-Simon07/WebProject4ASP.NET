@@ -1,14 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registro.aspx.cs" Inherits="WebApplication3.Registro" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registro.aspx.cs" MasterPageFile="~/Site.Master" Inherits="WebApplication3.Registro" %>
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-</head>
-<body>
-    <form id="telaRegistro" runat="server">
+  <asp:Content ID="ContentRegistro" ContentPlaceHolderId="Content" runat="server">
         <div>
 			<table>
 				<tr>
@@ -56,6 +49,4 @@
 			<asp:Button ID="btnConfirmarRegistro" runat="server" Text="CONFIRMAR" />
 			<asp:Button ID="btnCancelarRegistro" runat="server" Text="CANCELAR" />
         </div>
-    </form>
-</body>
-</html>
+ </asp:Content>

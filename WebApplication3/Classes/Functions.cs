@@ -169,5 +169,8 @@ namespace WebApplication3
             }
 
         }
+        public static void SalvarVisitante(Visitante visitante){
+            string query = "INSERT INTO ";
+		}
     }
 }
